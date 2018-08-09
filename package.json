@@ -1,0 +1,32 @@
+{
+  "name": "pxblue-navigation-collapsible-react",
+  "description": "",
+  "homepage": "https://stackblitz.com/edit/pxblue-navigation-collapsible-react",
+  "dependencies": {
+    "react": "16.1.1",
+    "react-dom": "16.1.1",
+    "react-scripts": "1.0.10",
+    "prop-types": "15.6.1",
+    "reactstrap": "6.3.0",
+    "material-ui": "1.0.0-beta.35",
+    "react-native": "0.56.0",
+    "react-router": "4.3.1",
+    "react-router-dom": "4.3.1",
+    "@material-ui/core": "1.3.1",
+    "material-ui-icons": "1.0.0-beta.36",
+    "react-router-native": "4.3.0",
+    "react-simple-dropdown": "3.2.0"
+  },
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "enzyme": "^3.4.1",
+    "enzyme-adapter-react-16": "^1.2.0"
+  }
+}
