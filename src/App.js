@@ -58,7 +58,7 @@ class App extends React.Component {
               <Typography type="title" color="inherit">Selected Page Name</Typography>
             </Toolbar>
           </AppBar>
-          <Drawer open={this.state.drawerOpen} onClose={() => this.toggleDrawer()} PaperProps={{width: '1600px'}}>
+          <Drawer open={this.state.drawerOpen} onClose={() => this.toggleDrawer()}>
             <div className={"flexVert"} style={{ height: '100%', width: '360px' }}> 
               <div className="flexVertBottom" style={{height: "180px", color: 'white', background: '#007bc1', padding: '16px' }}>
                   <Circle/>
@@ -71,57 +71,59 @@ class App extends React.Component {
                     </div>
                   </div>
               </div>
+              <div style={{flex: '1 1 0px', overflowY: 'auto'}}>
+                {this.state.showUserMenu ?
+                  <List subheader={<ListSubheader style={{position: 'unset'}}>User Account</ListSubheader>}>
+                    <Divider />
+                    <ListItem button>
+                      <ListItemIcon><SettingsIcon /></ListItemIcon>
+                      <ListItemText inset primary="User Profile" />
+                    </ListItem>
+                    <ListItem button component={Link} to='/logout' onClick={() => this.toggleDrawer()}>
+                      <ListItemIcon><SubdirectoryArrowRightIcon /></ListItemIcon>
+                      <ListItemText inset primary="Log Out" />
+                    </ListItem>
+                  </List>
+                  :
+                  <List subheader={<ListSubheader style={{position: 'unset'}}>Monitor</ListSubheader>}>
+                    <Divider />
+                    <ListItem button component={Link} to='/alerts' onClick={() => this.toggleDrawer()}>
+                      <ListItemIcon><MoveToInboxIcon /></ListItemIcon>
+                      <ListItemText inset primary="Alerts" />
+                    </ListItem>
+                    <ListItem button component={Link} to='/schedule' onClick={() => this.toggleDrawer()}>
+                      <ListItemIcon><SendIcon /></ListItemIcon>
+                      <ListItemText inset primary="Schedule" />
+                    </ListItem>
+                    <ListItem button component={Link} to='/products' onClick={() => this.toggleDrawer()}>
+                      <ListItemIcon><FolderIcon /></ListItemIcon>
+                      <ListItemText inset primary="Products" />
+                    </ListItem>
+                    <ListItem button component={Link} to='/eventlog' onClick={() => this.toggleDrawer()}>
+                      <ListItemIcon><InfoIcon /></ListItemIcon>
+                      <ListItemText inset primary="Event Log" />
+                    </ListItem>
+                    <ListItem button component={Link} to='/settings' onClick={() => this.toggleDrawer()}>
+                      <ListItemIcon><SettingsIcon /></ListItemIcon>
+                      <ListItemText inset primary="Settings" />
+                    </ListItem>
+                  </List>}
+                
+                <div style={{ flex: '1 1 0px' }} />
 
-              {this.state.showUserMenu ?
-                <List subheader={<ListSubheader>User Account</ListSubheader>}>
+                <Divider />
+                <List style={{flex: '0 0 auto' }} subheader={<ListSubheader>About<span style={{ position: 'absolute', right: '0px', paddingRight: '16px' }}>Software Version v1.0.3</span></ListSubheader>}>
                   <Divider />
                   <ListItem button>
-                    <ListItemIcon><SettingsIcon /></ListItemIcon>
-                    <ListItemText inset primary="User Profile" />
+                    <ListItemIcon><FlagIcon /></ListItemIcon>
+                    <ListItemText inset primary="User Guide" />
                   </ListItem>
-                  <ListItem button component={Link} to='/logout' onClick={() => this.toggleDrawer()}>
-                    <ListItemIcon><SubdirectoryArrowRightIcon /></ListItemIcon>
-                    <ListItemText inset primary="Log Out" />
+                  <ListItem button>
+                    <ListItemIcon><LocalOfferIcon /></ListItemIcon>
+                    <ListItemText inset primary="License Agreement" />
                   </ListItem>
                 </List>
-                :
-                <List subheader={<ListSubheader>Monitor</ListSubheader>}>
-                  <Divider />
-                  <ListItem button component={Link} to='/alerts' onClick={() => this.toggleDrawer()}>
-                    <ListItemIcon><MoveToInboxIcon /></ListItemIcon>
-                    <ListItemText inset primary="Alerts" />
-                  </ListItem>
-                  <ListItem button component={Link} to='/schedule' onClick={() => this.toggleDrawer()}>
-                    <ListItemIcon><SendIcon /></ListItemIcon>
-                    <ListItemText inset primary="Schedule" />
-                  </ListItem>
-                  <ListItem button component={Link} to='/products' onClick={() => this.toggleDrawer()}>
-                    <ListItemIcon><FolderIcon /></ListItemIcon>
-                    <ListItemText inset primary="Products" />
-                  </ListItem>
-                  <ListItem button component={Link} to='/eventlog' onClick={() => this.toggleDrawer()}>
-                    <ListItemIcon><InfoIcon /></ListItemIcon>
-                    <ListItemText inset primary="Event Log" />
-                  </ListItem>
-                  <ListItem button component={Link} to='/settings' onClick={() => this.toggleDrawer()}>
-                    <ListItemIcon><SettingsIcon /></ListItemIcon>
-                    <ListItemText inset primary="Settings" />
-                  </ListItem>
-                </List>}
-              <div style={{ flex: '1 1 0px' }} />
-
-              <Divider />
-              <List style={{flex: '0 0 auto' }} subheader={<ListSubheader>About<span style={{ position: 'absolute', right: '0px', paddingRight: '16px' }}>Software Version v1.0.3</span></ListSubheader>}>
-                <Divider />
-                <ListItem button>
-                  <ListItemIcon><FlagIcon /></ListItemIcon>
-                  <ListItemText inset primary="User Guide" />
-                </ListItem>
-                <ListItem button>
-                  <ListItemIcon><LocalOfferIcon /></ListItemIcon>
-                  <ListItemText inset primary="License Agreement" />
-                </ListItem>
-              </List>
+              </div>
             </div>
           </Drawer>
           <Main />
@@ -155,43 +157,43 @@ const Circle = () => (
 Define each of the individual pages. When these have real content, they should be moved to their own file and then included with the rest of the import statements.
 */
 const Alerts = () => (
-  <div>
+  <div id="ALERTS">
     <h1>Welcome to the Alert page!</h1>
   </div>
 );
 
 const Schedule = () => (
-  <div>
+  <div id="SCHEDULE">
     <h1>Welcome to the Schedule page!</h1>
   </div>
 );
 
 const Products = () => (
-  <div>
+  <div id="PRODUCTS">
     <h1>Welcome to the Products page!</h1>
   </div>
 );
 
 const EventLog = () => (
-  <div>
+  <div id="EVENTLOG">
     <h1>Welcome to the Event Log page!</h1>
   </div>
 );
 
 const Settings = () => (
-  <div>
+  <div id="SETTINGS">
     <h1>Welcome to the Settings page!</h1>
   </div>
 );
 
 const Logout = () => (
-  <div>
+  <div id="LOGOUT">
     <h1>You've successfully logged out!</h1>
   </div>
 );
 
 const Home = () => (
-  <div>
+  <div id="HOME">
     <h1>Welcome to the App!</h1>
   </div>
 );
