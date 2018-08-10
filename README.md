@@ -1,4 +1,5 @@
 # pxblue-navigation-collapsible-react
+[![CircleCI](https://circleci.com/gh/pxblue/side-navigation/tree/react.svg?style=shield)](https://circleci.com/gh/pxblue/side-navigation/tree/react)
 
 [Edit this project on StackBlitz](https://stackblitz.com/edit/pxblue-navigation-collapsible-react)
 
