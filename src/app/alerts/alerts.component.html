@@ -1,0 +1,9 @@
+<p>
+	Silenced Alert(s): {{ selectedOptions | json}}
+</p>
+
+<mat-selection-list #list [(ngModel)]="selectedOptions" (ngModelChange)="onChange($event)">
+	<mat-list-option *ngFor="let alert of alerts" [value]="alert.name">
+    {{alert.name}}
+	</mat-list-option>
+</mat-selection-list>
