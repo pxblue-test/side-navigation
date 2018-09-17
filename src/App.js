@@ -1,34 +1,42 @@
-// React Basics
-import { Switch, Route, Link } from 'react-router-dom'
-import React from 'react';
-
-// Material-UI Theming Elements
-import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
+// React/Material/PXBlue Basics
+  import { Switch, Route, NavLink } from 'react-router-dom'
+  import React from 'react';
+  import {EatonColors} from '@pxblue/themes/react/src';
+  import { withStyles } from '@material-ui/core/styles';
 
 // Material-UI Components
-import AppBar from 'material-ui/AppBar';
-import Divider from 'material-ui/Divider';
-import Drawer from 'material-ui/Drawer';
-import IconButton from 'material-ui/IconButton';
-import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
-import ListSubheader from 'material-ui/List/ListSubheader';
-import Toolbar from 'material-ui/Toolbar';
-import Typography from 'material-ui/Typography';
+  import AppBar from '@material-ui/core/AppBar';
+  import Divider from '@material-ui/core/Divider';
+  import Drawer from '@material-ui/core/Drawer';
+  import Hidden from '@material-ui/core/Hidden';
+  import IconButton from '@material-ui/core/IconButton';
+  import List from '@material-ui/core/List';
+  import ListItem from '@material-ui/core/ListItem';
+  import ListItemIcon from '@material-ui/core/ListItemIcon';
+  import ListItemText from '@material-ui/core/ListItemText';
+  import ListSubheader from '@material-ui/core/ListSubheader';
+  import Toolbar from '@material-ui/core/Toolbar';
+  import Typography from '@material-ui/core/Typography';
 
 // Material-UI Icons
-import ExpandMoreIcon from 'material-ui-icons/ExpandMore';
-import FlagIcon from 'material-ui-icons/Flag';
-import FolderIcon from 'material-ui-icons/Folder';
-import InfoIcon from 'material-ui-icons/Info';
-import LocalOfferIcon from 'material-ui-icons/LocalOffer';
-import MenuIcon from 'material-ui-icons/Menu';
-import MoveToInboxIcon from 'material-ui-icons/MoveToInbox';
-import SendIcon from 'material-ui-icons/Send';
-import SettingsIcon from 'material-ui-icons/Settings';
-import SubdirectoryArrowRightIcon from 'material-ui-icons/SubdirectoryArrowRight';
+  import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+  import FlagIcon from '@material-ui/icons/Flag';
+  import FolderIcon from '@material-ui/icons/Folder';
+  import InfoIcon from '@material-ui/icons/Info';
+  import LocalOfferIcon from '@material-ui/icons/LocalOffer';
+  import MenuIcon from '@material-ui/icons/Menu';
+  import MoveToInboxIcon from '@material-ui/icons/MoveToInbox';
+  import SendIcon from '@material-ui/icons/Send';
+  import SettingsIcon from '@material-ui/icons/Settings';
+  import SubdirectoryArrowRightIcon from '@material-ui/icons/SubdirectoryArrowRight';
 
-import './style.css';
+// Main routing controller
+  import Main from './router/main';
 
+// Additional styling elements
+  import './style.css';
+  import styles from './styles/styleClasses';
+  import Circle from './utilities/circle';
 
 /*
 The container for the entire app, including the common side-navigation panel and the main body panel.
@@ -37,182 +45,239 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showUserMenu: false
+      showUserMenu: false,
+      drawerOpen: false
     }
   }
 
   toggleDrawer() {
     this.setState({ drawerOpen: !this.state.drawerOpen });
   }
+
   toggleNavMenu() {
     this.setState({ showUserMenu: !this.state.showUserMenu });
   }
 
   render() {
+    const { classes } = this.props;
     return (
-      <MuiThemeProvider theme={createMuiTheme()}>
+      <div>
+        {this.getMobileNavigationMenu()}
         <div>
-          <AppBar position="fixed" style={{ backgroundColor: '#007bc1' }}>
-            <Toolbar>
-              <IconButton color="inherit" onClick={() => this.toggleDrawer()}><MenuIcon/></IconButton>
-              <Typography type="title" color="inherit">Selected Page Name</Typography>
+          <AppBar position="static" color="primary">
+            <Toolbar className={classes.toolbar}>
+              <IconButton color="inherit" onClick={() => this.toggleDrawer()}>
+                <MenuIcon/>
+              </IconButton>
+              <Typography variant="title" color="inherit">Selected Page Name</Typography>
             </Toolbar>
           </AppBar>
-          <Drawer open={this.state.drawerOpen} onClose={() => this.toggleDrawer()}>
-            <div className={"flexVert"} style={{ height: '100%', width: '360px' }}> 
-              <div className="flexVertBottom" style={{height: "180px", color: 'white', background: '#007bc1', padding: '16px' }}>
-                  <Circle/>
-                  <div style={{ cursor: "pointer", width: '100%' }} onClick={() => this.toggleNavMenu()}>
-                    <Typography variant="subheading" color="inherit" style={{lineHeight:'1rem'}}>User Name</Typography>
-                    <div className={'flexHor'}>
-                      <Typography variant="subheading" color="inherit" style={{lineHeight:'1rem'}}>username@domain.com</Typography>
-                      <div style={{flex: '1 1 0px'}}/>
-                      <ExpandMoreIcon style={this.state.showUserMenu ? {transform: 'rotate(180deg)'} : null}/>
-                    </div>
-                  </div>
-              </div>
-              <div style={{flex: '1 1 0px', overflowY: 'auto'}}>
-                {this.state.showUserMenu ?
-                  <List subheader={<ListSubheader style={{position: 'unset'}}>User Account</ListSubheader>}>
-                    <Divider />
-                    <ListItem button>
-                      <ListItemIcon><SettingsIcon /></ListItemIcon>
-                      <ListItemText inset primary="User Profile" />
-                    </ListItem>
-                    <ListItem button component={Link} to='/logout' onClick={() => this.toggleDrawer()}>
-                      <ListItemIcon><SubdirectoryArrowRightIcon /></ListItemIcon>
-                      <ListItemText inset primary="Log Out" />
-                    </ListItem>
-                  </List>
-                  :
-                  <List subheader={<ListSubheader style={{position: 'unset'}}>Monitor</ListSubheader>}>
-                    <Divider />
-                    <ListItem button component={Link} to='/alerts' onClick={() => this.toggleDrawer()}>
-                      <ListItemIcon><MoveToInboxIcon /></ListItemIcon>
-                      <ListItemText inset primary="Alerts" />
-                    </ListItem>
-                    <ListItem button component={Link} to='/schedule' onClick={() => this.toggleDrawer()}>
-                      <ListItemIcon><SendIcon /></ListItemIcon>
-                      <ListItemText inset primary="Schedule" />
-                    </ListItem>
-                    <ListItem button component={Link} to='/products' onClick={() => this.toggleDrawer()}>
-                      <ListItemIcon><FolderIcon /></ListItemIcon>
-                      <ListItemText inset primary="Products" />
-                    </ListItem>
-                    <ListItem button component={Link} to='/eventlog' onClick={() => this.toggleDrawer()}>
-                      <ListItemIcon><InfoIcon /></ListItemIcon>
-                      <ListItemText inset primary="Event Log" />
-                    </ListItem>
-                    <ListItem button component={Link} to='/settings' onClick={() => this.toggleDrawer()}>
-                      <ListItemIcon><SettingsIcon /></ListItemIcon>
-                      <ListItemText inset primary="Settings" />
-                    </ListItem>
-                  </List>}
-                
-                <div style={{ flex: '1 1 0px' }} />
-
-                <Divider />
-                <List style={{flex: '0 0 auto' }} subheader={<ListSubheader>About<span style={{ position: 'absolute', right: '0px', paddingRight: '16px' }}>Software Version v1.0.3</span></ListSubheader>}>
-                  <Divider />
-                  <ListItem button>
-                    <ListItemIcon><FlagIcon /></ListItemIcon>
-                    <ListItemText inset primary="User Guide" />
-                  </ListItem>
-                  <ListItem button>
-                    <ListItemIcon><LocalOfferIcon /></ListItemIcon>
-                    <ListItemText inset primary="License Agreement" />
-                  </ListItem>
-                </List>
-              </div>
-            </div>
-          </Drawer>
+          
           <Main />
         </div>
-      </MuiThemeProvider>
+      </div>
+    );
+  }
+
+  /*
+    The functions below have been used to abstract various pieces of the navigation
+    menu. This allows them to be shared between the mobile size navigation and the 
+    desktop size.
+  */
+
+  // returns the layout for the panel of main application pages
+  getPrimaryNavigation(){
+    const { classes } = this.props;
+    return(
+      <List subheader={
+        <ListSubheader 
+          className={classes.subheader}
+          style={{
+            position: 'unset'
+          }}
+        >
+          Monitor
+        </ListSubheader>
+      }>
+        <Divider />
+        <this.NavigationListItem 
+          title={'Alerts'} 
+          route={'/alerts'}
+          icon={<MoveToInboxIcon />} 
+        />
+        <this.NavigationListItem 
+          title={'Schedule'} 
+          route={'/schedule'}
+          icon={<SendIcon />} 
+        />
+        <this.NavigationListItem 
+          title={'Products'} 
+          route={'/products'}
+          icon={<FolderIcon />} 
+        />
+        <this.NavigationListItem 
+          title={'Event Log'} 
+          route={'/eventlog'}
+          icon={<InfoIcon />} 
+        />
+        <this.NavigationListItem 
+          title={'Settings'} 
+          route={'/settings'}
+          icon={<SettingsIcon />} 
+        />
+      </List>
+    );
+  }
+
+  // returns the layout for the panel of secondary application pages (About, License)
+  getSecondaryNavigation(){
+    const {classes} = this.props;
+    return (
+      <List style={{flex: '0 0 auto' }} 
+        subheader={
+          <ListSubheader 
+            className={classes.subheader}
+            style={{
+              position: 'unset' 
+            }}
+          >About
+            <span 
+              style={{ 
+                position: 'absolute', 
+                right: '0px', 
+                paddingRight: '16px' 
+              }}
+            >Software Version v1.0.3</span>
+          </ListSubheader>
+        }>
+        <Divider />
+        <this.NavigationListItem 
+          title={'User Guide'} 
+          route={'/userguide'}
+          icon={<FlagIcon />} 
+        />
+        <this.NavigationListItem 
+          title={'License Agreement'} 
+          route={'/license'}
+          icon={<LocalOfferIcon />} 
+        />
+      </List>
+    );
+  }
+
+  // returns the layout for the panel of user pages (Profile, Settings)
+  getUserNavigation(){
+    const {classes} = this.props;
+    return (
+      <List subheader={
+        <ListSubheader 
+          className={classes.subheader}
+          style={{
+            position: 'unset'
+          }}
+        >User Account</ListSubheader>
+      }>
+        <Divider />
+        <this.NavigationListItem 
+          title={'User Profile'} 
+          route={'/profile'}
+          icon={<SettingsIcon />} 
+        />
+        <this.NavigationListItem 
+          title={'Log Out'} 
+          route={'/logout'}
+          icon={<SubdirectoryArrowRightIcon />} 
+        />
+      </List>
+    );
+  }
+
+  // returns the layout for the user details panel (mobile-only)
+  getUserDetails(){
+    return (
+      <div className="flexVertBottom" 
+        style={{
+          height: "180px", 
+          color: 'white', 
+          background: EatonColors.blue['900'], 
+          padding: '16px' 
+          }}
+      >
+        <Circle/>
+        <div 
+          style={{ 
+            cursor: "pointer", 
+            width: '100%' 
+          }} 
+          onClick={() => this.toggleNavMenu()}
+        >
+          <Typography 
+            variant="subheading" 
+            color="inherit" 
+            style={{lineHeight:'1rem'}}
+          >User Name</Typography>
+          <div className={'flexHor'}>
+            <Typography 
+              variant="subheading" 
+              color="inherit" 
+              style={{lineHeight:'1rem'}}
+            >username@domain.com</Typography>
+            <div style={{flex: '1 1 0px'}}/>
+            <ExpandMoreIcon style={this.state.showUserMenu ? {transform: 'rotate(180deg)'} : null}/>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // returns the navigation drawer used at mobile resolution
+  getMobileNavigationMenu(){
+    const { classes } = this.props;
+    return (
+      <Drawer 
+        open={this.state.drawerOpen} 
+        onClose={() => this.toggleDrawer()}
+        classes={{paper: classes.drawer}}
+      >
+        <div 
+          className={"flexVert"} 
+          style={{ 
+            height: '100%', 
+            width: '100%' 
+          }}
+        > 
+          {this.getUserDetails()}
+          <div style={{flex: '1 1 0px', overflowY: 'auto'}}>
+            {this.state.showUserMenu ? this.getUserNavigation() : this.getPrimaryNavigation()}
+            <div style={{ flex: '1 1 0px' }} />
+            <Divider />
+            {this.getSecondaryNavigation()}
+          </div>
+        </div>
+      </Drawer>
+    );
+  }
+
+  NavigationListItem = ({title, route, icon}) => {
+    const {classes} = this.props;
+    const open = (this.state.drawerOpen);
+    const action = () => this.setState({drawerOpen: false});
+    return (
+      <ListItem 
+        className={classes.listItem + (open ? ' open' : '')} 
+        activeClassName={'listItemSelected'}
+        component={NavLink} to={route}
+        onClick={() => action()} 
+      >
+        <ListItemIcon className="listIcon">
+          {icon}
+        </ListItemIcon>
+        <ListItemText inset 
+          className={classes.listItemText}
+          primary={title}
+        />
+      </ListItem>
     );
   }
 }
-export default App;
-
-
-/* 
-Some helper object/classes. These can be moved to separate files when they grow in complexity.
-*/
-
-const Circle = () => (
-  <div style={{
-    padding: 10,
-    marginBottom: 10,
-    display: "inline-block",
-    backgroundColor: '#ffffff',
-    borderRadius: "50%",
-    width: 64,
-    height: 64
-  }}>
-  </div>
-);
-
-
-/* 
-Define each of the individual pages. When these have real content, they should be moved to their own file and then included with the rest of the import statements.
-*/
-const Alerts = () => (
-  <div id="ALERTS">
-    <h1>Welcome to the Alert page!</h1>
-  </div>
-);
-
-const Schedule = () => (
-  <div id="SCHEDULE">
-    <h1>Welcome to the Schedule page!</h1>
-  </div>
-);
-
-const Products = () => (
-  <div id="PRODUCTS">
-    <h1>Welcome to the Products page!</h1>
-  </div>
-);
-
-const EventLog = () => (
-  <div id="EVENTLOG">
-    <h1>Welcome to the Event Log page!</h1>
-  </div>
-);
-
-const Settings = () => (
-  <div id="SETTINGS">
-    <h1>Welcome to the Settings page!</h1>
-  </div>
-);
-
-const Logout = () => (
-  <div id="LOGOUT">
-    <h1>You've successfully logged out!</h1>
-  </div>
-);
-
-const Home = () => (
-  <div id="HOME">
-    <h1>Welcome to the App!</h1>
-  </div>
-);
-
-
-/*
-The main page body, which contains the route definitions
-*/
-const Main = () => (
-  <main style={{paddingTop:60}}>
-    <Switch>
-      <Route exact path='/alerts' component={Alerts}/>
-      <Route exact path='/schedule' component={Schedule}/>
-      <Route exact path='/logout' component={Logout}/>
-      <Route exact path='/products' component={Products}/>
-      <Route exact path='/eventlog' component={EventLog}/>
-      <Route exact path='/settings' component={Settings}/>
-      <Route exact path='/logout' component={Logout}/>
-      <Route path='*' component={Home}/>
-    </Switch>
-  </main>
-);
+export default withStyles(styles)(App);
