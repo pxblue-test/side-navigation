@@ -1,11 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter, MemoryRouter} from 'react-router-dom';
+
 import App from './App';
+import Alerts from './pages/alerts';
+import Schedule from './pages/schedule';
+import Logout from './pages/logout';
+import Products from './pages/products';
+import EventLog from './pages/events';
+import Settings from './pages/settings';
+import Home from './pages/home';
+
 import Drawer from 'material-ui/Drawer';
+
 import Enzyme, {shallow, mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-// import ListItem from '@material-ui/core/ListItem';
 
 Enzyme.configure({adapter: new Adapter()});
 
@@ -21,7 +30,7 @@ it('defaults to homepage', () => {
           <App/>
         </BrowserRouter>
       );
-      expect(wrapper.find('#HOME')).toHaveLength(1);
+      expect(wrapper.find(Home)).toHaveLength(1);
 });
 
 it('renders homepage for bad routes', () => {
@@ -30,7 +39,7 @@ it('renders homepage for bad routes', () => {
           <App/>
         </MemoryRouter>
       );
-      expect(wrapper.find('#HOME')).toHaveLength(1);
+      expect(wrapper.find(Home)).toHaveLength(1);
 });
 
 it('renders correct route', () => {
@@ -39,28 +48,28 @@ it('renders correct route', () => {
           <App/>
         </MemoryRouter>
       );
-      expect(wrapper.find('#LOGOUT')).toHaveLength(1);
+      expect(wrapper.find(Logout)).toHaveLength(1);
       
       wrapper = mount(
         <MemoryRouter initialEntries={[ '/settings' ]}>
           <App/>
         </MemoryRouter>
       );
-      expect(wrapper.find('#SETTINGS')).toHaveLength(1);
+      expect(wrapper.find(Settings)).toHaveLength(1);
 
       wrapper = mount(
         <MemoryRouter initialEntries={[ '/eventlog' ]}>
           <App/>
         </MemoryRouter>
       );
-      expect(wrapper.find('#EVENTLOG')).toHaveLength(1);
+      expect(wrapper.find(EventLog)).toHaveLength(1);
 
       wrapper = mount(
         <MemoryRouter initialEntries={[ '/products' ]}>
           <App/>
         </MemoryRouter>
       );
-      expect(wrapper.find('#PRODUCTS')).toHaveLength(1);
+      expect(wrapper.find(Products)).toHaveLength(1);
 });
 
 it('defaults to drawer closed', () => {
