@@ -3,7 +3,6 @@
   method that allows for custom style overrides of the default component visuals.
 */
 import React from 'react';
-import {EatonColors} from '@pxblue/themes/react/src';
 
 const styles = theme => ({
   toolbar:{

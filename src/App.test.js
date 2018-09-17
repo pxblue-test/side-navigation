@@ -11,7 +11,7 @@ import EventLog from './pages/events';
 import Settings from './pages/settings';
 import Home from './pages/home';
 
-import Drawer from 'material-ui/Drawer';
+import Drawer from '@material-ui/core/Drawer';
 
 import Enzyme, {shallow, mount} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
@@ -73,17 +73,17 @@ it('renders correct route', () => {
 });
 
 it('defaults to drawer closed', () => {
- const app = shallow(<App />);
- const drawer = app.find(Drawer);
- expect(drawer.props().open).toBeFalsy();
+  const app = shallow(<App/>).dive();
+  const drawer = app.find(Drawer);
+  expect(drawer.props().open).toBeFalsy();
 });
 
 it('opens and closes the drawer', () => {
-    const app = shallow(<App />);
-    app.instance().toggleDrawer();
-    let drawer = app.find(Drawer);
-    expect(drawer.props().open).toBeTruthy();
-    app.instance().toggleDrawer();
-    drawer = app.find(Drawer);
-    expect(drawer.props().open).toBeFalsy();
+  const app = shallow(<App/>).dive();
+  app.instance().toggleDrawer();
+  let drawer = app.find(Drawer);
+  expect(drawer.props().open).toBeTruthy();
+  app.instance().toggleDrawer();
+  drawer = app.find(Drawer);
+  expect(drawer.props().open).toBeFalsy();
 });
