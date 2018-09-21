@@ -199,7 +199,7 @@ class App extends React.Component {
         style={{
           height: "180px", 
           color: 'white', 
-          background: EatonColors.blue['900'], 
+          background: EatonColors.blue['500'], 
           padding: '16px' 
           }}
       >
