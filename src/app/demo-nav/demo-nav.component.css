@@ -2,10 +2,11 @@
     height: 100%;
   }
   
-  .sidenav {
-    width: 350px;
-    box-shadow: 1px 0 1px rgba(0,0,0,.24);
-    overflow-x: hidden;
+.sidenav {
+  width: 350px;
+  max-width: 90%;
+  box-shadow: 1px 0 1px rgba(0,0,0,.24);
+  overflow-x: hidden;
   }
   [matListIcon]{
    color: #757575;
