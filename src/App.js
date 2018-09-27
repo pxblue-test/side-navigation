@@ -194,15 +194,9 @@ class App extends React.Component {
 
   // returns the layout for the user details panel (mobile-only)
   getUserDetails(){
+    const {classes} = this.props;
     return (
-      <div className="flexVertBottom" 
-        style={{
-          height: "180px", 
-          color: 'white', 
-          background: EatonColors.blue['500'], 
-          padding: '16px' 
-          }}
-      >
+      <div className={"flexVertBottom " + classes.header} >
         <Circle/>
         <div 
           style={{ 
