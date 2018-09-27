@@ -12,6 +12,12 @@ const styles = theme => ({
     maxWidth: '85%',
     width: theme.spacing.unit * 45
   },
+  header:{
+    height: '180px',
+    color: 'white',
+    background: theme.palette.primary['500'],
+    padding: '16px'
+  },
   subheader:{
     paddingLeft: '15px',
     paddingRight: '15px'
