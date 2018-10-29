@@ -69,7 +69,7 @@ class App extends React.Component {
               <IconButton color="inherit" onClick={() => this.toggleDrawer()}>
                 <MenuIcon/>
               </IconButton>
-              <Typography variant="title" color="inherit">Selected Page Name</Typography>
+              <Typography variant="h6" color="inherit">Selected Page Name</Typography>
             </Toolbar>
           </AppBar>
           
@@ -206,13 +206,13 @@ class App extends React.Component {
           onClick={() => this.toggleNavMenu()}
         >
           <Typography 
-            variant="subheading" 
+            variant="subtitle1" 
             color="inherit" 
             style={{lineHeight:'1rem'}}
           >User Name</Typography>
           <div className={'flexHor'}>
             <Typography 
-              variant="subheading" 
+              variant="subtitle1" 
               color="inherit" 
               style={{lineHeight:'1rem'}}
             >username@domain.com</Typography>
