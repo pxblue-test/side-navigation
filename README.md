@@ -1,4 +1,4 @@
-# Basic Side Navigation Example
+# Basic Side Navigation 
 
 This is a sample application showing how to build a basic slide-out navigation drawer with routing.
 
