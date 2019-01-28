@@ -2,7 +2,7 @@
   This file contains class definitions for use with Material UI's 'withStyles' 
   method that allows for custom style overrides of the default component visuals.
 */
-import React from 'react';
+
 
 const styles = theme => ({
   toolbar:{
@@ -29,13 +29,7 @@ const styles = theme => ({
      backgroundColor: 'rgba(0, 0, 0, 0.08)'
     }
   },
-  listItem:{
-    paddingLeft: '15px',
-    paddingRight: '15px',
-    '&:hover':{
-     backgroundColor: 'rgba(0, 0, 0, 0.08)'
-    }
-  },
+ 
   listItemSelected:{
     position: 'relative',
     '&:hover':{

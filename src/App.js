@@ -1,14 +1,12 @@
 // React/Material/PXBlue Basics
-  import { Switch, Route, NavLink } from 'react-router-dom'
+  import { NavLink } from 'react-router-dom'
   import React from 'react';
-  import {EatonColors} from '@pxblue/themes/react';
   import { withStyles } from '@material-ui/core/styles';
 
 // Material-UI Components
   import AppBar from '@material-ui/core/AppBar';
   import Divider from '@material-ui/core/Divider';
   import Drawer from '@material-ui/core/Drawer';
-  import Hidden from '@material-ui/core/Hidden';
   import IconButton from '@material-ui/core/IconButton';
   import List from '@material-ui/core/List';
   import ListItem from '@material-ui/core/ListItem';
