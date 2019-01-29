@@ -1,4 +1,5 @@
 # Basic Side Navigation 
+[![CircleCI](https://circleci.com/gh/pxblue/side-navigation/tree/angular.svg?style=shield)](https://circleci.com/gh/pxblue/side-navigation/tree/angular)
 
 This is a sample application showing how to build a basic slide-out navigation drawer with routing.
 
