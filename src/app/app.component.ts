@@ -22,4 +22,7 @@ export class AppComponent {
         }
       );
   }
+  closeNav(){
+    this.open = false;
+  }
 }
