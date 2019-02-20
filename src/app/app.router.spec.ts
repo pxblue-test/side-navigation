@@ -4,11 +4,11 @@ import { Router } from "@angular/router";
 import { RouterTestingModule } from '@angular/router/testing';
 
 import {
-    routes
+  routes
 } from "./app.router";
 import { AppComponent } from "./app.component";
 import { AppModule } from "./app.module";
-import { DemoNavComponent } from './demo-nav/demo-nav.component';
+import { ComingSoonComponent } from './comingsoon/comingsoon.component';
 
 // test module configuration for each test
 const testModuleConfig = () => {
@@ -32,7 +32,7 @@ fdescribe('Routing service',
             fakeAsync(() => {
                 const injector = getTestBed();
                 const router = injector.get(Router);
-                const fixture = TestBed.createComponent(DemoNavComponent);
+                const fixture = TestBed.createComponent(ComingSoonComponent);
                 fixture.detectChanges();
                 tick(50);
                 router.navigate(['/'])
@@ -45,7 +45,7 @@ fdescribe('Routing service',
             fakeAsync(() => {
                 const injector = getTestBed();
                 const router = injector.get(Router);
-                const fixture = TestBed.createComponent(DemoNavComponent);
+                const fixture = TestBed.createComponent(ComingSoonComponent);
                 fixture.detectChanges();
                 tick(50);
                 router.navigate(['/products'])
@@ -58,7 +58,7 @@ fdescribe('Routing service',
             fakeAsync(() => {
                 const injector = getTestBed();
                 const router = injector.get(Router);
-                const fixture = TestBed.createComponent(DemoNavComponent);
+                const fixture = TestBed.createComponent(ComingSoonComponent);
                 fixture.detectChanges();
                 tick(50);
                 router.navigate(['/alert'])

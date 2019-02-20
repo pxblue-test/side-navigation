@@ -1,9 +1,0 @@
-<p>
-	Selected Product(s): {{ selectedOptions | json}}
-</p>
-
-<mat-selection-list #list [(ngModel)]="selectedOptions" (ngModelChange)="onChange($event)">
-	<mat-list-option *ngFor="let product of products" [value]="product.name">
-    {{product.name}}
-	</mat-list-option>
-</mat-selection-list>
