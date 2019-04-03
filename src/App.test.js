@@ -9,6 +9,9 @@ import Logout from './pages/logout';
 import Products from './pages/products';
 import EventLog from './pages/events';
 import Settings from './pages/settings';
+import License from './pages/license';
+import UserProfile from './pages/profile';
+import Userguide from './pages/userguide';
 import Home from './pages/home';
 
 import Drawer from '@material-ui/core/Drawer';
@@ -70,6 +73,27 @@ it('renders correct route', () => {
         </MemoryRouter>
       );
       expect(wrapper.find(Products)).toHaveLength(1);
+
+      wrapper = mount(
+        <MemoryRouter initialEntries={[ '/license' ]}>
+          <App/>
+        </MemoryRouter>
+      );
+      expect(wrapper.find(License)).toHaveLength(1);
+
+      wrapper = mount(
+        <MemoryRouter initialEntries={[ '/profile' ]}>
+          <App/>
+        </MemoryRouter>
+      );
+      expect(wrapper.find(UserProfile)).toHaveLength(1);
+
+      wrapper = mount(
+        <MemoryRouter initialEntries={[ '/userguide' ]}>
+          <App/>
+        </MemoryRouter>
+      );
+      expect(wrapper.find(Userguide)).toHaveLength(1);
 });
 
 it('defaults to drawer closed', () => {
