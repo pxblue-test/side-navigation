@@ -1,8 +1,8 @@
 import React from 'react';
 
-const PROFILE = () => (
-  <div id="ALERTS">
+const UserProfile = () => (
+  <div id="PROFILE">
     <h1>Welcome to the User Profile page!</h1>
   </div>
 );
-export default PROFILE;
+export default UserProfile;

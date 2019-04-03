@@ -1,8 +1,8 @@
 import React from 'react';
 
-const GUIDE = () => (
-  <div id="ALERTS">
+const Userguide = () => (
+  <div id="GUIDE">
     <h1>Welcome to the User Guide page!</h1>
   </div>
 );
-export default GUIDE;
+export default Userguide;

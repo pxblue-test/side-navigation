@@ -1,8 +1,8 @@
 import React from 'react';
 
-const LICENSE = () => (
-  <div id="EVENTLOG">
+const License = () => (
+  <div id="LICENSE">
     <h1>Welcome to the License Agreement page!</h1>
   </div>
 );
-export default LICENSE;
+export default License;
