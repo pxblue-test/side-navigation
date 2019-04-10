@@ -1,6 +1,6 @@
 <mat-sidenav-container class="app-container" (backdropClick)="open = false">
 	<mat-sidenav #snav mode="over" class="sidenav" [opened]="open">
-	 	<mat-nav-list fxLayout="column" fxFlexFill style="padding-top:0; overflow-x:hidden">
+		<mat-nav-list fxLayout="column" fxFlexFill style="padding-top:0; overflow-x:hidden" data-cy="nav-header">
 			<!-- Mobile Toolbar -->
 			<mat-toolbar style="background-color:#007bc1; color:white; min-height:150px;">
 				<mat-toolbar-row style="height:72px; margin-left: 10px; margin-bottom: 42px;">
@@ -9,7 +9,7 @@
 				<mat-toolbar-row style="height:4px;">
 					<small>User Name</small>
 				</mat-toolbar-row>
-				<mat-toolbar-row (click)="userMenu=!userMenu" fxLayout="row" style="cursor:pointer;">
+				<mat-toolbar-row (click)="userMenu=!userMenu" data-cy="menu-toggle" fxLayout="row" style="cursor:pointer;">
 					<small fxFlex>User@email.com</small>
 					<mat-icon *ngIf="!userMenu">expand_more</mat-icon>
 					<mat-icon *ngIf="userMenu">expand_less</mat-icon>
@@ -42,8 +42,8 @@
 						Settings
 					</a>
 				</section>
-				<section *ngIf="userMenu" >
-					<h3 matSubheader style="margin-top: 0">User Account</h3>
+				<section *ngIf="userMenu">
+					<h3 matSubheader style="margin-top: 0" data-cy="toggle-submenu">User Account</h3>
 					<mat-divider></mat-divider>
 					<a mat-list-item [routerLinkActive]="['primaryLink']" routerLink="/profile" (click)="closeNav()">
 						<mat-icon matListIcon class="nav-icon">settings</mat-icon>
@@ -55,10 +55,10 @@
 					</a>
 				</section>
 				<mat-divider></mat-divider>
-				<div fxFlex ></div>
+				<div fxFlex></div>
 				<mat-divider></mat-divider>
 
-				<section >
+				<section>
 					<h3 matSubheader style="margin-top: 0">About</h3>
 					<mat-divider></mat-divider>
 					<a mat-list-item [routerLinkActive]="['primaryLink']" routerLink="/guide" (click)="closeNav()">
@@ -70,11 +70,11 @@
 						License Agreement
 					</a>
 				</section>
-		
+
 			</div>
 		</mat-nav-list>
 	</mat-sidenav>
 	<mat-sidenav-content class="nav-content">
 		<router-outlet></router-outlet>
-  </mat-sidenav-content>
+	</mat-sidenav-content>
 </mat-sidenav-container>
