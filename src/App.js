@@ -1,40 +1,40 @@
 // React/Material/PXBlue Basics
-  import { NavLink } from 'react-router-dom'
-  import React from 'react';
-  import { withStyles } from '@material-ui/core/styles';
+import { NavLink } from 'react-router-dom'
+import React from 'react';
+import { withStyles } from '@material-ui/core/styles';
 
 // Material-UI Components
-  import AppBar from '@material-ui/core/AppBar';
-  import Divider from '@material-ui/core/Divider';
-  import Drawer from '@material-ui/core/Drawer';
-  import IconButton from '@material-ui/core/IconButton';
-  import List from '@material-ui/core/List';
-  import ListItem from '@material-ui/core/ListItem';
-  import ListItemIcon from '@material-ui/core/ListItemIcon';
-  import ListItemText from '@material-ui/core/ListItemText';
-  import ListSubheader from '@material-ui/core/ListSubheader';
-  import Toolbar from '@material-ui/core/Toolbar';
-  import Typography from '@material-ui/core/Typography';
+import AppBar from '@material-ui/core/AppBar';
+import Divider from '@material-ui/core/Divider';
+import Drawer from '@material-ui/core/Drawer';
+import IconButton from '@material-ui/core/IconButton';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import ListSubheader from '@material-ui/core/ListSubheader';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
 
 // Material-UI Icons
-  import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-  import FlagIcon from '@material-ui/icons/Flag';
-  import FolderIcon from '@material-ui/icons/Folder';
-  import InfoIcon from '@material-ui/icons/Info';
-  import LocalOfferIcon from '@material-ui/icons/LocalOffer';
-  import MenuIcon from '@material-ui/icons/Menu';
-  import MoveToInboxIcon from '@material-ui/icons/MoveToInbox';
-  import SendIcon from '@material-ui/icons/Send';
-  import SettingsIcon from '@material-ui/icons/Settings';
-  import SubdirectoryArrowRightIcon from '@material-ui/icons/SubdirectoryArrowRight';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import FlagIcon from '@material-ui/icons/Flag';
+import FolderIcon from '@material-ui/icons/Folder';
+import InfoIcon from '@material-ui/icons/Info';
+import LocalOfferIcon from '@material-ui/icons/LocalOffer';
+import MenuIcon from '@material-ui/icons/Menu';
+import MoveToInboxIcon from '@material-ui/icons/MoveToInbox';
+import SendIcon from '@material-ui/icons/Send';
+import SettingsIcon from '@material-ui/icons/Settings';
+import SubdirectoryArrowRightIcon from '@material-ui/icons/SubdirectoryArrowRight';
 
 // Main routing controller
-  import Main from './router/main';
+import Main from './router/main';
 
 // Additional styling elements
-  import './style.css';
-  import styles from './styles/styleClasses';
-  import Circle from './utilities/circle';
+import './style.css';
+import styles from './styles/styleClasses';
+import Circle from './utilities/circle';
 
 /*
 The container for the entire app, including the common side-navigation panel and the main body panel.
@@ -64,13 +64,13 @@ class App extends React.Component {
         <div>
           <AppBar position="static" color="primary">
             <Toolbar className={classes.toolbar}>
-              <IconButton color="inherit" onClick={() => this.toggleDrawer()}>
-                <MenuIcon/>
+              <IconButton color="inherit" data-cy="menu-btn" onClick={() => this.toggleDrawer()}>
+                <MenuIcon />
               </IconButton>
               <Typography variant="h6" color="inherit">Selected Page Name</Typography>
             </Toolbar>
           </AppBar>
-          
+
           <Main />
         </div>
       </div>
@@ -84,11 +84,11 @@ class App extends React.Component {
   */
 
   // returns the layout for the panel of main application pages
-  getPrimaryNavigation(){
+  getPrimaryNavigation() {
     const { classes } = this.props;
-    return(
+    return (
       <List subheader={
-        <ListSubheader 
+        <ListSubheader
           className={classes.subheader}
           style={{
             position: 'unset'
@@ -99,76 +99,76 @@ class App extends React.Component {
       }>
         <Divider />
         {this.NavigationListItem({
-          title:'Alerts',
-          route:'/alerts',
-          icon:<MoveToInboxIcon/>
+          title: 'Alerts',
+          route: '/alerts',
+          icon: <MoveToInboxIcon />
         })}
         {this.NavigationListItem({
-          title:'Schedule',
-          route:'/schedule',
-          icon:<SendIcon/>
+          title: 'Schedule',
+          route: '/schedule',
+          icon: <SendIcon />
         })}
         {this.NavigationListItem({
-          title:'Products',
-          route:'/products',
-          icon:<FolderIcon/>
+          title: 'Products',
+          route: '/products',
+          icon: <FolderIcon />
         })}
         {this.NavigationListItem({
-          title:'Event Log',
-          route:'/eventlog',
-          icon:<InfoIcon/>
+          title: 'Event Log',
+          route: '/eventlog',
+          icon: <InfoIcon />
         })}
         {this.NavigationListItem({
-          title:'Settings',
-          route:'/settings',
-          icon:<SettingsIcon/>
+          title: 'Settings',
+          route: '/settings',
+          icon: <SettingsIcon />
         })}
       </List>
     );
   }
 
   // returns the layout for the panel of secondary application pages (About, License)
-  getSecondaryNavigation(){
-    const {classes} = this.props;
+  getSecondaryNavigation() {
+    const { classes } = this.props;
     return (
-      <List style={{flex: '0 0 auto' }} 
+      <List style={{ flex: '0 0 auto' }}
         subheader={
-          <ListSubheader 
+          <ListSubheader
             className={classes.subheader}
             style={{
-              position: 'unset' 
+              position: 'unset'
             }}
           >About
-            <span 
-              style={{ 
-                position: 'absolute', 
-                right: '0px', 
-                paddingRight: '16px' 
+            <span
+              style={{
+                position: 'absolute',
+                right: '0px',
+                paddingRight: '16px'
               }}
             >Software Version v1.0.3</span>
           </ListSubheader>
         }>
         <Divider />
         {this.NavigationListItem({
-          title:'User Guide',
-          route:'/userguide',
-          icon:<FlagIcon/>
+          title: 'User Guide',
+          route: '/userguide',
+          icon: <FlagIcon />
         })}
         {this.NavigationListItem({
-          title:'License Agreement',
-          route:'/license',
-          icon:<LocalOfferIcon/>
+          title: 'License Agreement',
+          route: '/license',
+          icon: <LocalOfferIcon />
         })}
       </List>
     );
   }
 
   // returns the layout for the panel of user pages (Profile, Settings)
-  getUserNavigation(){
-    const {classes} = this.props;
+  getUserNavigation() {
+    const { classes } = this.props;
     return (
       <List subheader={
-        <ListSubheader 
+        <ListSubheader
           className={classes.subheader}
           style={{
             position: 'unset'
@@ -177,45 +177,45 @@ class App extends React.Component {
       }>
         <Divider />
         {this.NavigationListItem({
-          title:'User Profile',
-          route:'/profile',
-          icon:<SettingsIcon/>
+          title: 'User Profile',
+          route: '/profile',
+          icon: <SettingsIcon />
         })}
         {this.NavigationListItem({
-          title:'Log Out',
-          route:'/logout',
-          icon:<SubdirectoryArrowRightIcon/>
+          title: 'Log Out',
+          route: '/logout',
+          icon: <SubdirectoryArrowRightIcon />
         })}
       </List>
     );
   }
 
   // returns the layout for the user details panel (mobile-only)
-  getUserDetails(){
-    const {classes} = this.props;
+  getUserDetails() {
+    const { classes } = this.props;
     return (
-      <div className={"flexVertBottom " + classes.header} >
-        <Circle/>
-        <div 
-          style={{ 
-            cursor: "pointer", 
-            width: '100%' 
-          }} 
+      <div data-cy="nav-header" className={"flexVertBottom " + classes.header} >
+        <Circle />
+        <div
+          style={{
+            cursor: "pointer",
+            width: '100%'
+          }}
           onClick={() => this.toggleNavMenu()}
         >
-          <Typography 
-            variant="subtitle1" 
-            color="inherit" 
-            style={{lineHeight:'1rem'}}
+          <Typography
+            variant="subtitle1"
+            color="inherit"
+            style={{ lineHeight: '1rem' }}
           >User Name</Typography>
-          <div className={'flexHor'}>
-            <Typography 
-              variant="subtitle1" 
-              color="inherit" 
-              style={{lineHeight:'1rem'}}
+          <div data-cy="menu-toggle" className={'flexHor'}>
+            <Typography
+              variant="subtitle1"
+              color="inherit"
+              style={{ lineHeight: '1rem' }}
             >username@domain.com</Typography>
-            <div style={{flex: '1 1 0px'}}/>
-            <ExpandMoreIcon style={this.state.showUserMenu ? {transform: 'rotate(180deg)'} : null}/>
+            <div style={{ flex: '1 1 0px' }} />
+            <ExpandMoreIcon style={this.state.showUserMenu ? { transform: 'rotate(180deg)' } : null} />
           </div>
         </div>
       </div>
@@ -223,23 +223,23 @@ class App extends React.Component {
   }
 
   // returns the navigation drawer used at mobile resolution
-  getMobileNavigationMenu(){
+  getMobileNavigationMenu() {
     const { classes } = this.props;
     return (
-      <Drawer 
-        open={this.state.drawerOpen} 
+      <Drawer
+        open={this.state.drawerOpen}
         onClose={() => this.toggleDrawer()}
-        classes={{paper: classes.drawer}}
+        classes={{ paper: classes.drawer }}
       >
-        <div 
-          className={"flexVert"} 
-          style={{ 
-            height: '100%', 
-            width: '100%' 
+        <div
+          className={"flexVert"}
+          style={{
+            height: '100%',
+            width: '100%'
           }}
-        > 
+        >
           {this.getUserDetails()}
-          <div style={{flex: '1 1 0px', overflowY: 'auto'}}>
+          <div style={{ flex: '1 1 0px', overflowY: 'auto' }}>
             {this.state.showUserMenu ? this.getUserNavigation() : this.getPrimaryNavigation()}
             <div style={{ flex: '1 1 0px' }} />
             <Divider />
@@ -250,21 +250,21 @@ class App extends React.Component {
     );
   }
 
-  NavigationListItem({title, route, icon}){
-    const {classes} = this.props;
+  NavigationListItem({ title, route, icon }) {
+    const { classes } = this.props;
     const open = (this.state.drawerHover || this.state.drawerOpen);
-    const action = () => this.setState({drawerOpen: false, drawerHover: false});
+    const action = () => this.setState({ drawerOpen: false, drawerHover: false });
     return (
-      <ListItem 
-        className={classes.listItem + ' ' + (open ? classes.open : '')} 
+      <ListItem
+        className={classes.listItem + ' ' + (open ? classes.open : '')}
         activeClassName={classes.listItemSelected}
         component={NavLink} to={route}
-        onClick={() => action()} 
+        onClick={() => action()}
       >
         <ListItemIcon className={classes.listIcon}>
           {icon}
         </ListItemIcon>
-        <ListItemText inset 
+        <ListItemText inset
           className={classes.listItemText}
           primary={title}
         />
