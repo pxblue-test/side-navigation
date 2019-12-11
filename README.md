@@ -6,7 +6,7 @@ This project demonstrates how to build a basic slide-out navigation drawer with 
 | Angular | [![CircleCI](https://circleci.com/gh/pxblue/side-navigation/tree/angular.svg?style=shield)](https://circleci.com/gh/pxblue/side-navigation/tree/angular) | [View on Stackblitz](https://stackblitz.com/github/pxblue/side-navigation/tree/angular)
 | React | [![CircleCI](https://circleci.com/gh/pxblue/side-navigation/tree/react.svg?style=shield)](https://circleci.com/gh/pxblue/side-navigation/tree/react) | [View on Code Sandbox](https://codesandbox.io/s/github/pxblue/side-navigation/tree/react)
 | Ionic | [![CircleCI](https://circleci.com/gh/pxblue/side-navigation/tree/ionic.svg?style=shield)](https://circleci.com/gh/pxblue/side-navigation/tree/ionic) | [View on Stackblitz](https://stackblitz.com/github/pxblue/side-navigation/tree/ionic)
-| React Native | [![CircleCI](https://circleci.com/gh/pxblue/side-navigation/tree/reactnative.svg?style=shield)](https://circleci.com/gh/pxblue/side-navigation/tree/reactnative) | [View on Snack](https://snack.expo.io/@git/github.com/pxblue/side-navigation@reactnative)
+| React Native | [![CircleCI](https://circleci.com/gh/pxblue/side-navigation/tree/reactnative.svg?style=shield)](https://circleci.com/gh/pxblue/side-navigation/tree/reactnative) | [View on Snack](https://snack.expo.io/@git/github.com/pxblue/side-navigation@reactnative?preview=true&platform=ios)
 
 ## Running the Example
 ### Angular
